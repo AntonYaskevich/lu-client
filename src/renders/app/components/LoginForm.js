@@ -10,6 +10,12 @@ export default class LoginForm extends React.Component {
         }
     }
 
+    componentWillMount(){
+        if(localStorage.getItem('jwt')){
+            this.props.actions.success()
+        }
+    }
+
     render() {
         return (
             <div>

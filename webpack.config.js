@@ -5,7 +5,6 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        auth: path.resolve(__dirname, 'src/renders/auth/index.js'),
         app: path.resolve(__dirname, 'src/renders/app/index.js')
     },
     output: {
