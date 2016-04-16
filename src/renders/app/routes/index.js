@@ -1,10 +1,12 @@
-import React from 'react'
-import {Route, IndexRoute} from 'react-router'
-import App from '../containers/App'
-import LoginForm from '../components/LoginForm'
+import React from "react";
+import {Route, IndexRoute} from "react-router";
+import LoginForm from "../components/LoginForm";
+import RTCApp from "../components/RTCApp";
+import {requireAuth} from "../middlewares";
 
 export default (
-    <Route path="/" component={App}>
-        <IndexRoute component={LoginForm}/>
+    <Route path="/">
+        <IndexRoute component={RTCApp} onEnter={requireAuth}/>
+        <Route path="login" component={LoginForm}/>
     </Route>
 )

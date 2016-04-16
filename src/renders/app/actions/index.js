@@ -1,3 +1,4 @@
+import {hashHistory} from 'react-router';
 import type from '../constants'
 import utils from '../../utils'
 
@@ -24,8 +25,8 @@ let signInActions = {
         }
     },
     success: data => {
-        localStorage.setItem('jwt', data.Authorization)
-        console.log(data.Authorization)
+        localStorage.setItem('token', data.Authorization)
+        hashHistory.push('/')
         return {
             type: type.USER_SIGN_IN_SUCCESS
         }

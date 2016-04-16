@@ -1,5 +1,12 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import actions from '../actions'
 
+@connect(
+    state => state,
+    dispatch => ({actions: bindActionCreators(actions.signInActions, dispatch)})
+)
 export default class LoginForm extends React.Component {
 
     constructor(props) {
@@ -10,11 +17,6 @@ export default class LoginForm extends React.Component {
         }
     }
 
-    componentWillMount(){
-        if(localStorage.getItem('jwt')){
-            this.props.actions.success()
-        }
-    }
 
     render() {
         return (
@@ -46,6 +48,6 @@ export default class LoginForm extends React.Component {
 
     onSubmit(e) {
         e.preventDefault()
-        this.props.onSubmit(this.state)
+        this.props.actions.signIn(this.state)
     }
 }
